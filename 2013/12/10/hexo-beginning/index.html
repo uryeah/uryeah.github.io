@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo搭建教程 | Vincent's BLOG</title>
+  <meta name="author" content="Vincent YE">
+  
+  <meta name="description" content="hexo,java,javascript">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo搭建教程"/>
+  <meta property="og:site_name" content="Vincent's BLOG"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Vincent's BLOG" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Vincent's BLOG</a></h1>
+  <h2><a href="/">积跬步，耍流氓</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-10T03:15:25.000Z"><a href="/2013/12/10/hexo-beginning/">12月 10 2013</a></time>
+      
+      
+  
+    <h1 class="title">Hexo搭建教程</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>hexo是一个快速搭建静态博客的框架，基于node.js，托管在github上，由于自身的轻量级，再搭配上各种强大的插件，并且对于markdown中文的友好度，远远满足绝大部分人的博客需求。但是不同于wordpress，hexo由于需要使用Github,Git,Markdown,Node.js这样的工具，好多插件、widget都需要自己安装、设置。所以适合那些有一定计算机基础，喜欢折腾的人。这是一个免费开源的博客程序，任何人都可以使用和修改。值得一提的是，hexo是来自一个台湾大学生的作品。</p>
+<p>以下为<strong>windows环境</strong>下的安装方法：<br><a id="more"></a><br>1. 环境准备<br>-<br>1. 安装git工具   msysgit；<br>2. 安装node.js，  目前的node.js版本仅需要下载一个安装包安装即可（已包含npm）;<br>3. 打开git bash ，<code>npm install -g hexo</code>进行下载安装<br>4. 创建一个你存放hexo文件的文件夹，比如E:\hexo, cd 到此文件夹进行初始化，   <code>hexo init</code>；<br>5. 此时已经在本地安装好了hexo，你现在可以开始折腾了；执行完下面两条命令后打开<code>localhost:4000</code>查看</p>
+<pre><code>hexo generate
+hexo server
+</code></pre>
+
+<p>2.托管到github<br>-<br>1. 注册你的github账号，新建repository,名字格式为 <strong>yourUserName.github.io</strong><br><em>注意：新用户一般需要设置ssh才能使用git的功能，百度一下即可，不再阐述。</em></p>
+<p>2.部署，打开hexo根目录下的<code>_config.yml</code>,编辑如下(uryeah替换为你的用户名，以下)：</p>
+<pre>deploy:
+  type: github
+  repository: https://github.com/uryeah/uryeah.github.io.git
+  branch: master
+</pre>
+
+<p>执行：</p>
+<pre>
+hexo generate  //每次修改hexo文件后都需要执行此指令才能保存
+hexo deploy
+</pre>
+
+<p>过十分钟后左右，打开uryeah.github.io即可访问你的博客。</p>
+<p>3.绑定自定义域名<br>-<br>没有此需求的用户可直接跳过此节。不过我相信很多博客人都会想要使用自己的域名，lucky,在hexo中绑定域名相当简单。</p>
+<p>1.购买域名（废话），我选择是在国内的网站“<a href="http://www.net.cn/" target="_blank">万网</a>”上购买，一般人都会去外国的“<a href="http://www.godaddy.com/" target="_blank">狗爹</a>” 上购买，但因为是墙外的缘故，还需要通过DNS服务商进行一些设置，我懒得去折腾这个，所以直接在万网上搞定得了，价格差不多；</p>
+<p>2.在域名商的网站上新增域名解析，添加CNAME记录，记录值为XXX.github.io格式，其他都默认得了。</p>
+<p>3.在hexo根目录的source文件夹下新建一个CNAME文件，内容为你的域名。记得hexo generate后再deploy。</p>
+<p>过一段时间（长的话几个小时）后即可用你的域名访问hexo了。</p>
+<p>4.Hexo的配置<br>-<br>1.对于整站的配置，在<code>hexo\_config.yml</code>中，基本都可以看懂，有网友@zipperary翻译出来了。</p>
+<pre>
+<code>
+  # Hexo Configuration
+## Docs: http://zespia.tw/hexo/docs/configure.html
+## Source: https://github.com/tommy351/hexo/
+
+# Site 这里的配置，哪项配置反映在哪里，可以参考我的博客
+title: Zippera's blog #站点名，站点左上角
+subtitle: Walk steps step by step #副标题，站点左上角
+description: Walk steps step by step #给搜索引擎看的，对站点的描述，可以自定义
+author: zippera #在站点左下角可以看到
+email: #你的联系邮箱
+language: zh-CN #中国人嘛，用中文
+
+# URL #这项暂不配置，绑定域名后，欲创建sitemap.xml需要配置该项
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://zipperary.com
+root: /
+permalink: :year/:month/:day/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+
+# Writing 文章布局、写作格式的定义，不修改
+new_post_name: :title.md # File name of new posts
+default_layout: post
+auto_spacing: false # Add spaces between asian characters and western characters
+titlecase: false # Transform title into titlecase
+max_open_file: 100
+filename_case: 0
+highlight:
+  enable: true
+  backtick_code_block: true
+  line_number: true
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Archives 默认值为2，这里都修改为1，相应页面就只会列出标题，而非全文
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 1
+tag: 1
+
+# Server 不修改
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+logger: false
+logger_format:
+
+# Date / Time format 日期格式，不修改
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: MMM D YYYY
+time_format: H:mm:ss
+
+# Pagination 每页显示文章数，可以自定义，我将10改成了5
+## Set per_page to 0 to disable pagination
+per_page: 5
+pagination_dir: page
+
+# Disqus Disqus插件，我们会替换成“多说”，不修改
+disqus_shortname:
+
+# Extensions 这里配置站点所用主题和插件，暂默认，后面会介绍怎么修改
+## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
+## Themes: https://github.com/tommy351/hexo/wiki/Themes
+theme: light
+exclude_generator:
+plugins:
+- hexo-generator-feed
+- hexo-generator-sitemap
+
+# Deployment 站点部署到github要配置，上一节中已经讲过
+## Docs: http://zespia.tw/hexo/docs/deploy.html
+deploy:
+  type: github
+  repository: https://github.com/zippera/zippera.github.io.git
+  branch: master
+</code>
+</pre>
+>
+
+2.另外还有一个对于网站主题的配置，`hexo\themes\light_config.yml`
+
+<pre>
+<code>
+menu: #站点右上角导航栏，暂时默认，后面介绍修改
+  首页: /
+  存档: /archives
+  关于: /about
+  ToDo: /todolist
+
+
+widgets: #站点右边栏，暂时默认，后面介绍修改和添加
+- search
+- category
+- tagcloud
+- weibo
+- blogroll
+
+
+excerpt_link: 阅读全文 #替换为中文
+
+plugins: 
+
+
+twitter: #右边栏要显示twitter展示的话，需要在此设置
+  username: moxie198
+  show_replies: false
+  tweet_count: 5
+
+addthis: #SNS分享，身在天朝，当然用“百度分享”，暂时默认，后面会介绍
+  enable: true
+  pubid:
+  facebook: true
+  twitter: true
+  google: true
+  pinterest: true
+
+fancybox: true #图片效果，默认
+
+google_analytics: #要使用google_analytics进行统计的话，这里需要配置ID，暂时默认，后面介绍
+rss:  #生成RSS，需要配置路径，暂时默认，后面介绍
+</code>
+></pre>
+
+<p>OK，你已经把Hexo跑起来了，有个网友@zipperary有个非常详细的<a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank">使用教程系列</a>，接下来就看他的吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yewenxiang001"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2013 Vincent YE
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
